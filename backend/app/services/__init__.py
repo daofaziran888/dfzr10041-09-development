@@ -24,6 +24,7 @@ from app.services.export_bundle import ExportBundleService
 from app.services.audit_event import AuditEventService
 from app.services.tenant_isolation import TenantIsolationService
 from app.services.format_adapt import FormatAdaptService
+from app.services.txn_recon import TxnReconService
 
 SERVICES: dict[str, BaseModuleService] = {
     "log_source": LogSourceService(),
@@ -48,6 +49,7 @@ SERVICES: dict[str, BaseModuleService] = {
     "audit_event": AuditEventService(),
     "tenant_isolation": TenantIsolationService(),
     "format_adapt": FormatAdaptService(),
+    "txn_recon": TxnReconService(),
 }
 
 

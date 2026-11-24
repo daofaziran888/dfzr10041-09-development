@@ -16,8 +16,10 @@
 │   └── vite.config.ts        dev server 配置（open: false）
 ├── backend/                  FastAPI（Python） 后端
 │   ├── app/routers/resource.py  通用查询/导出/登记/动作接口
+│   ├── app/routers/txn_recon.py 事务日志查询/质量报告/缺口补采专用接口
 │   ├── app/services/<key>.py    每个模块独立领域逻辑
 │   ├── app/services/base.py     共享服务骨架
+│   ├── app/core/txn_recon.py    事务采集对账引擎（查询/质报/缺口/补采/恢复）
 │   └── app/store.py          内存数据仓库与示例数据
 ├── .gitignore
 └── docker-compose.yml
@@ -72,6 +74,7 @@ npm run dev
 | 访问审计 | `audit_event` | 审计记录 | 记录编号、操作模块、操作人 |
 | 租户隔离 | `tenant_isolation` | 租户配置 | 租户编号、租户名称、日志来源 |
 | 格式适配 | `format_adapt` | 适配器配置 | 适配器编号、输入格式、输出格式 |
+| 事务对账 | `txn_recon` | 对账明细 | 明细编号、事务键、日志来源 |
 
 ## 约定
 

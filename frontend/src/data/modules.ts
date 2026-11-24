@@ -244,6 +244,17 @@ export const MODULES: ModuleMeta[] = [
     actionTargets: {"启效适配": "生效中", "标记异常": "转换异常", "废弃适配": "已废弃"},
     metrics: ["适配器总数", "生效中适配", "转换异常数"],
   },
+  {
+    key: "txn_recon",
+    name: "事务对账",
+    entity: "对账明细",
+    desc: "按事务键跨来源对账采集原行，定位解析结果、发现缺口并驱动补采。",
+    fields: ["明细编号", "事务键", "日志来源", "发生时间", "解析状态", "采集引用", "处置方式", "物理指纹"],
+    statuses: ["已确认", "待纠错", "已纠正", "已归档"],
+    actions: ["提交纠错", "标记纠正", "归档明细"],
+    actionTargets: {"提交纠错": "待纠错", "标记纠正": "已纠正", "归档明细": "已归档"},
+    metrics: ["明细总数", "已确认明细", "待纠错明细"],
+  },
 ]
 
 export const MODULE_BY_KEY: Map<string, ModuleMeta> = new Map(

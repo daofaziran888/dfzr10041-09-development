@@ -92,7 +92,11 @@ class ParseRule:
             if m is None:
                 return ParseResultStatus.FORMAT_MISMATCH, None
             fields = dict(zip(self.field_names, m.groups()))
-            missing = [name for name in self.field_names if name not in fields]
+            # 字段缺失：字段名没有对应捕获，或可选捕获组未参与匹配（None）。
+            missing = [
+                name for name in self.field_names
+                if name not in fields or fields.get(name) is None
+            ]
             if missing:
                 return ParseResultStatus.FIELD_MISSING, fields
             return ParseResultStatus.OK, fields
